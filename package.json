@@ -1,0 +1,23 @@
+{
+  "name": "chat",
+  "version": "1.0.0",
+  "description": "Chat demo",
+  "main": "index.js",
+  "author": "Alejo Rodriguez <a.rodsott@gmail.com>",
+  "dependencies": {
+    "express": "^4.13.4",
+    "gravatar": "^1.4.0",
+    "react": "^0.14.6",
+    "react-dom": "^0.14.6",
+    "socket.io": "^1.4.4",
+    "socket.io-client": "^1.4.4"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "gulp": "^3.9.0",
+    "gulp-sass": "^2.1.1",
+    "reactify": "^1.1.1",
+    "vinyl-source-stream": "^1.1.0",
+    "watchify": "^3.7.0"
+  }
+}
