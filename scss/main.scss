@@ -43,6 +43,7 @@
                 float: right;
                 font-size: 13px;
                 color: #676767;
+                cursor: pointer;
             }
         }
     }
@@ -56,7 +57,7 @@
         .chatMessageList {
             height: 400px;
             overflow-y: auto;
-            background: #FDFDFD;
+            background: #f7f7f7;
 
             .chatMessage {
                 .chatMessageBody {
@@ -92,27 +93,27 @@
 
                     &.from-other {
                         .chatMessageText {
-                            background: #E7FDE0;
+                            background: #e7f6b8;
                             float: left;
                             border-radius: 0 5px 5px 10px;
                         }
 
                         .chatMessageAvatar {
                             float: left;
-                            background-color: #E7FDE0;
+                            background-color: #e7f6b8;
                         }
                     }
 
                     &.from-myself {
                         .chatMessageText {
-                            background: #E0E4FD;
+                            background: #cfe9f3;
                             float: right;
                             border-radius: 5px 0 10px 5px;
                         }
 
                         .chatMessageAvatar {
                             float: right;
-                            background-color: #E0E4FD;
+                            background-color: #cfe9f3;
                         }
                     }
                 }
