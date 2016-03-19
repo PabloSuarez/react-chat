@@ -41,7 +41,7 @@ var ChatMessage = React.createClass({
 ChatMessageList = React.createClass({
     componentDidUpdate: function () {
         var domElement = ReactDOM.findDOMNode(this);
-        domElement.scrollTop = domElement.scrollHeight
+        domElement.scrollTop = domElement.scrollHeight;
     },
     render: function () {
         var messages = this.props.messages.map(function (message) {
@@ -168,5 +168,5 @@ var ChatBox = React.createClass({
 
 ReactDOM.render(
   <ChatBox />,
-  document.getElementById('chat-containter')
+  document.getElementById('chat-container')
 );
