@@ -2,6 +2,34 @@
   background-color: $gray-dark;
   width: 20%;
 
+  .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+    .menu {
+      color: $gray-middle-light;
+      font-style: normal;
+      height: 20px;
+      transform: rotate(90deg);
+      transition: all 500ms;
+      width: 0 10px;
+
+      &:hover {
+        color: $gray-light;
+        transform: rotate(30deg);
+      }
+
+      &::after {
+        content: '|';
+      }
+
+      &::before {
+        content: '|';
+      }
+    }
+  }
+
   &-form {
     padding-right: 1vw;
 
