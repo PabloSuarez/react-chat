@@ -3,47 +3,45 @@ var ReactDOM = require('react-dom');
 var socket = require('socket.io-client')();
 
 user = {
-    email: '',
-    avatar: ''
+  email: '',
+  avatar: ''
 }
 
 socket.on('chat email', function (avatar) {
-    console.log(avatar);
-    user.avatar = avatar;
+  user.avatar = avatar;
 });
 
 var ChatMessage = React.createClass({
-    render: function () {
-
-        var bodyClass = ['chatMessageBody'];
-        if (this.props.user == socket.id) {
-            bodyClass.push('from-myself');
-        } else {
-            bodyClass.push('from-other');
-        }
-        bodyClass = bodyClass.join(' ');
-
-        var styles = {
-            backgroundImage: 'url(' + this.props.avatar + ')',
-        }
-
-        return (
-            <div className="chatMessage">
-                <div className={ bodyClass }>
-                    <span className="chatMessageAvatar" style={ styles }></span>
-                    <p className="chatMessageText">
-                        { this.props.text }
-                    </p>
-                </div>
-            </div>
-        )
+  render: function () {
+    var bodyClass = ['chat-message-body'];
+    if (this.props.user == socket.id) {
+      bodyClass.push('from-myself');
+    } else {
+      bodyClass.push('from-other');
     }
+    bodyClass = bodyClass.join(' ');
+
+    var styles = {
+      backgroundImage: 'url(' + this.props.avatar + ')',
+    }
+
+    return (
+        <div className="chat-message">
+            <div className={ bodyClass }>
+                <span className="chat-message-avatar" style={ styles }></span>
+                <p className="chat-message-text">
+                    { this.props.text }
+                </p>
+            </div>
+        </div>
+    )
+  }
 });
 
 ChatMessageList = React.createClass({
     componentDidUpdate: function () {
         var domElement = ReactDOM.findDOMNode(this);
-        domElement.scrollTop = domElement.scrollHeight
+        domElement.scrollTop = domElement.scrollHeight;
     },
     render: function () {
         var messages = this.props.messages.map(function (message) {
@@ -56,7 +54,7 @@ ChatMessageList = React.createClass({
             )
         });
         return (
-            <div className="chatMessageList">
+            <div className="list">
                 { messages }
             </div>
         )
@@ -93,9 +91,9 @@ ChatForm = React.createClass({
     },
     render: function () {
         return (
-            <form className="chatForm" onSubmit={ this.handleSubmit }>
+            <form className="chat-form" onSubmit={ this.handleSubmit }>
                 <textarea
-                    className="chatInput"
+                    className="chat-input"
                     value={ this.state.text }
                     onChange={ this.handleTextChange }
                     onKeyDown={ this.handleTextKeyDown }
@@ -119,10 +117,10 @@ var ChatConfiguration = React.createClass({
     },
     render: function () {
         return (
-            <div className="chatConfiguration">
-                <form className="chatConfigurationForm" onSubmit={ this.handleSubmit }>
+            <div className="chat-configuration">
+                <form className="chat-configuration-form" onSubmit={ this.handleSubmit }>
                     <input
-                        className="configurationEmail"
+                        className="configuration-form-email"
                         placeholder="Enter your email.."
                         type="text"
                         value={ this.state.email }
@@ -157,9 +155,9 @@ var ChatBox = React.createClass({
     },
     render: function () {
         return (
-            <div className="chatBox">
+            <div className="chat">
                 <ChatConfiguration/>
-                <div className="chatMessagesContainer">
+                <div className="messages-container">
                     <ChatMessageList messages={ this.state.messages } />
                     <ChatForm handleChatSubmit={ this.handleChatSubmit } />
                 </div>
@@ -170,5 +168,5 @@ var ChatBox = React.createClass({
 
 ReactDOM.render(
   <ChatBox />,
-  document.getElementById('example')
+  document.getElementById('chat-container')
 );
