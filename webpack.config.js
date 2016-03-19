@@ -1,5 +1,6 @@
 var fs = require('fs');
 var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var SERVER_APP_NAME = 'app';
 var CLIENT_APP_NAME = 'app';
@@ -55,7 +56,7 @@ clientConfig = {
     client: './' + path.join(PATHS.client, CLIENT_APP_NAME),
   },
   output: {
-    path: path.join(PATHS.public, 'js'),
+    path: path.join(PATHS.public, 'assets'),
     filename: '[name].bundle.js'
   },
   devtool: "source-map",
@@ -71,13 +72,16 @@ clientConfig = {
       },
       {
         test: /\.scss$/,
-        loaders: ["style", "css?sourceMap", "sass?sourceMap"]
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader?sourceMap!sass-loader?sourceMap")
       }
     ]
   },
   resolve: {
     extensions: ['', '.js' ,'.jsx']
-  }
+  },
+  plugins: [
+    new ExtractTextPlugin("main.css")
+  ]
 }
 
 module.exports = [
