@@ -1,4 +1,5 @@
 @import './colors';
+@import './variables';
 
 * {
   box-sizing: border-box;
@@ -59,7 +60,6 @@ body {
         border: 1px solid $gray-light;
         color: $gray-dark;
         cursor: pointer;
-        float: right;
         font-size: 13px;
         padding: 5px 10px;
       }
@@ -74,63 +74,70 @@ body {
       background: $gray-dark;
       height: 84vh;
       overflow-y: auto;
+      padding: $default-padding;
 
       .message {
+        align-items: center;
+        display: flex;
+        margin: 5px;
 
-        &-body {
-          margin: 5px;
+        // clear fix this element
+        &:after {
+          clear: both;
+          content: ' ';
+          display: block;
+          height: 0;
+          visibility: hidden;
+        }
 
-          // clear fix this element
-          &:after {
-            clear: both;
-            content: ' ';
-            display: block;
-            height: 0;
-            visibility: hidden;
-          }
+        .avatar {
+          background-size: cover;
+          border-radius: 20px;
+          box-shadow: 0 1px 2px $gray-dark;
+          display: block;
+          height: 30px;
+          margin: 0 5px;
+          width: 30px;
+        }
 
-          &-avatar {
-            background-size: cover;
-            border-radius: 20px;
-            box-shadow: 0 1px 2px $gray-dark;
-            height: 30px;
-            margin: 0 5px;
-            width: 30px;
-          }
+        .text {
+          border-radius: 0 5px 5px 10px;
+          box-shadow: 0 1px 2px $gray-light;
+          color: $gray-dark;
+          display: inline-block;
+          margin: 6px 0 0;
+          max-width: 190px;
+          padding: 5px 10px;
+          white-space: pre-line;
+          word-wrap: break-word;
+        }
 
-          &-text {
-            box-shadow: 0 1px 2px $gray-light;
-            color: $gray-dark;
-            margin: 6px 0 0;
-            max-width: 190px;
-            padding: 5px 10px;
-            white-space: pre-line;
-            word-wrap: break-word;
-          }
+        &-myself {
+          justify-content: flex-end;
+        }
+      }
 
-          &.from-other {
-            .chat-message-text {
-              background: #e7f6b8;
-              border-radius: 0 5px 5px 10px;
-              float: left;
+      .from {
+        &-other {
+          .message {
+            &-text {
+              background: $green-light;
             }
 
-            .chat-message-avatar {
-              background-color: #e7f6b8;
-              float: left;
+            &-avatar {
+              background-color: $green-light;
             }
           }
+        }
 
-          &.from-myself {
-            .chat-message-text {
+        &-myself {
+          .message {
+            &-text {
               background: $gray-light;
-              border-radius: 5px 0 10px 5px;
-              float: right;
             }
 
-            .chat-message-avatar {
+            &-avatar {
               background-color: $gray-light;
-              float: right;
             }
           }
         }
