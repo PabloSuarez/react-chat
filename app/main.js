@@ -13,11 +13,11 @@ socket.on('chat email', function (avatar) {
 
 var ChatMessage = React.createClass({
   render: function () {
-    var bodyClass = ['chat-message-body'];
+    var bodyClass = ['message'];
     if (this.props.user == socket.id) {
-      bodyClass.push('from-myself');
+      bodyClass.push('message-myself');
     } else {
-      bodyClass.push('from-other');
+      bodyClass.push('message-other');
     }
     bodyClass = bodyClass.join(' ');
 
@@ -26,14 +26,12 @@ var ChatMessage = React.createClass({
     }
 
     return (
-        <div className="chat-message">
-            <div className={ bodyClass }>
-                <span className="chat-message-avatar" style={ styles }></span>
-                <p className="chat-message-text">
-                    { this.props.text }
-                </p>
-            </div>
-        </div>
+          <div className={ bodyClass }>
+              <span className="avatar" style={ styles }></span>
+              <p className="text">
+                  { this.props.text }
+              </p>
+          </div>
     )
   }
 });
@@ -105,7 +103,7 @@ ChatForm = React.createClass({
 
 var ChatConfiguration = React.createClass({
     getInitialState: function () {
-        return { email: '' };
+        return { email: 'hostsuarezpablo@gmail.com' };
     },
     handleSubmit: function (e) {
         e.preventDefault();
