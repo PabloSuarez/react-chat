@@ -63,7 +63,7 @@ clientConfig = {
   module: {
     loaders: [
       {
-        test: /\.jsx$/,
+        test: /\.js[x]?$/,
         include: [path.join(PATHS.src, PATHS.client)],
         loader: 'babel',
         query: {
