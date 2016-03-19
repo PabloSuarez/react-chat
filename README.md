@@ -2,9 +2,15 @@
 React chat implementation
 
 # Install
-* clone the repor.
+* clone the repo.
 * run $ 'npm install'.
 
 
 # Run
-* run $ 'node index'
+* run $ 'npm run start'
+
+# Build
+* run $ 'npm run build'
+
+# Watch
+* run $ 'npm run watch'

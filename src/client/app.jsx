@@ -1,8 +1,12 @@
-var React = require('react');
-var ReactDOM = require('react-dom');
-var socket = require('socket.io-client')();
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Socket from 'socket.io-client';
 
-user = {
+import './scss/main.scss';
+
+let socket = Socket();
+
+let user = {
   email: '',
   avatar: ''
 }
@@ -36,7 +40,7 @@ var ChatMessage = React.createClass({
   }
 });
 
-ChatMessageList = React.createClass({
+let ChatMessageList = React.createClass({
     componentDidUpdate: function () {
         var domElement = ReactDOM.findDOMNode(this);
         domElement.scrollTop = domElement.scrollHeight;
@@ -59,7 +63,7 @@ ChatMessageList = React.createClass({
     }
 });
 
-ChatForm = React.createClass({
+let ChatForm = React.createClass({
     getInitialState: function () {
         return { text: ''}
     },

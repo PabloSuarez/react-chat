@@ -5,9 +5,10 @@ var SERVER_APP_NAME = 'app';
 var CLIENT_APP_NAME = 'app';
 var PATHS = {
   context: path.join(__dirname, ''),
+  public: path.join(__dirname, 'public'),
+  src: path.join(__dirname, 'src'),
   server: './server',
-  client: './client',
-  build: path.join(__dirname, 'build')
+  client: './client'
 }
 
 var nodeModules = {};
@@ -18,15 +19,19 @@ fs.readdirSync('node_modules').filter(function(x) {
 });
 
 serverConfig = {
-  context: PATHS.context,
+  context: PATHS.src,
   entry: {
     server: './' + path.join(PATHS.server, SERVER_APP_NAME)
   },
   output: {
-    path: PATHS.build,
-    filename: '[name].bundle.js'
+    path: PATHS.context,
+    filename: 'main.js'
   },
   target: 'node',
+  node: {
+    __dirname: false,
+    __filename: false
+  },
   externals: nodeModules,
   module: {
     loaders: [
@@ -45,23 +50,28 @@ serverConfig = {
 }
 
 clientConfig = {
-  context: PATHS.context,
+  context: PATHS.src,
   entry: {
-    client: './' + path.join(PATHS.client, CLIENT_APP_NAME)
+    client: './' + path.join(PATHS.client, CLIENT_APP_NAME),
   },
   output: {
-    path: PATHS.build,
+    path: path.join(PATHS.public, 'js'),
     filename: '[name].bundle.js'
   },
+  devtool: "source-map",
   module: {
     loaders: [
       {
         test: /\.jsx$/,
-        include: [path.join(PATHS.context, PATHS.client)],
+        include: [path.join(PATHS.src, PATHS.client)],
         loader: 'babel',
         query: {
           presets: ['react', 'es2015']
         }
+      },
+      {
+        test: /\.scss$/,
+        loaders: ["style", "css?sourceMap", "sass?sourceMap"]
       }
     ]
   },
