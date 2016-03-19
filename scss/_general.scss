@@ -1,0 +1,16 @@
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  background-color: $gray-light;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+}
+
+body {
+  padding: 5vh;
+}

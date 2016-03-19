@@ -1,0 +1,21 @@
+@import './chat-sidebar/sidebar';
+@import './chat-content/content';
+@import './message/message';
+
+.chat {
+  background-color: $white;
+  border-radius: $default-border-radius;
+  box-shadow: 0 2px 0 $green-light;
+  display: flex;
+  height: 100%;
+  padding-bottom: 0;
+  width: 100%;
+
+  &-sidebar {
+    @extend %sidebar;
+  }
+
+  &-content {
+    @extend %content;
+  }
+}
