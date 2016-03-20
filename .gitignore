@@ -1,5 +1,5 @@
-build/
-css/
 node_modules/
+public/assets/
+main.js
 npm-debug.log
 .DS_Store

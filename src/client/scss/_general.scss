@@ -1,0 +1,24 @@
+////////////////////////////////////////////////////////////////////////////////
+// Imports
+@import './media-query/media';
+////////////////////////////////////////////////////////////////////////////////
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  background-color: $gray-light;
+  font-size: 16px;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+}
+
+body {
+  @include breakpoint(tablet) {
+    padding: 5vh;
+  }
+}
